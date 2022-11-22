@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import keycloak from '@/main'
+//import pdfView from '../views/pdfView.vue'
 
 Vue.use(VueRouter)
 
@@ -179,6 +180,30 @@ const routes: Array<RouteConfig> = [
     name: 'NoAccess',
     component: () => import('../views/NoAccess.vue')
   },
+  /*{
+    path: '/pdfview',
+    name: 'pdf',
+    component: pdfView
+    }*/
+    {
+      path: '/pdf',
+      name: 'pdfView',
+      component: function (){
+        keycloak.updateToken(-1)
+        if(keycloak.hasResourceRole(process.env.VUE_APP_KEYCLOAK_CLIENT_ROLE)){
+          return import('../views/ClientDashboard.vue')
+        }
+        if(keycloak.hasResourceRole(process.env.VUE_APP_KEYCLOAK_AGENT_ROLE)){
+          return import('../views/AgentDashboard.vue')
+        }
+        if(keycloak.hasResourceRole(process.env.VUE_APP_KEYCLOAK_ALLOXENTRIC_ROLE)){
+          return import('../views/AlloxentricDashboard.vue')
+        }
+        else{
+          return import('../views/pdfView.vue')
+        }
+      }
+    },
 ]
 
 const router = new VueRouter({

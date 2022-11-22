@@ -7,6 +7,7 @@ WORKDIR /opt/alloxentric
 
 COPY ./package*.json .
 RUN npm install
+RUN npm install vue-pdf-embed
 
 COPY . /opt/alloxentric
 

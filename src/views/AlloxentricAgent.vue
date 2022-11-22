@@ -142,6 +142,7 @@
   </template>
   
   <script lang="ts">
+  /* eslint-disable */
     export default {
       data: () => ({
         dialog: false,
