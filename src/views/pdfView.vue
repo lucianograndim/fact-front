@@ -10,9 +10,7 @@
         </v-card-title>
         <v-container class="py-4">
           <v-div>
-            ipdf
-            
-            epdf
+            <iframe style= "width : 100%; height :750px" src="https://www.orimi.com/pdf-test.pdf" frameborder="0"></iframe>
           </v-div>
         </v-container>
       </v-container>
